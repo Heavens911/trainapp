@@ -51,7 +51,7 @@ namespace Ceiling_App.Model
                 entity.HasOne(d => d.Client)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.ClientId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.ClientCascade)
                     .HasConstraintName("FK_ClientOrder");
             });
 
