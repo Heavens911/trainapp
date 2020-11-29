@@ -31,21 +31,19 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.ClientListBox = new System.Windows.Forms.ListBox();
-            this.ClientName = new System.Windows.Forms.TextBox();
             this.DelButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.OrdersListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.ClientSName = new System.Windows.Forms.TextBox();
             this.EditOrderButton = new System.Windows.Forms.Button();
             this.OrderTextBox = new System.Windows.Forms.TextBox();
             this.AddOrderButton = new System.Windows.Forms.Button();
             this.DelOrderButton = new System.Windows.Forms.Button();
+            this.EditClient = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(188, 479);
+            this.AddButton.Location = new System.Drawing.Point(105, 423);
             this.AddButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(194, 27);
@@ -75,17 +73,9 @@
             this.ClientListBox.TabIndex = 3;
             this.ClientListBox.SelectedIndexChanged += new System.EventHandler(this.ClientListBox_SelectedIndexChanged);
             // 
-            // ClientName
-            // 
-            this.ClientName.Location = new System.Drawing.Point(206, 419);
-            this.ClientName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ClientName.Name = "ClientName";
-            this.ClientName.Size = new System.Drawing.Size(158, 23);
-            this.ClientName.TabIndex = 4;
-            // 
             // DelButton
             // 
-            this.DelButton.Location = new System.Drawing.Point(188, 512);
+            this.DelButton.Location = new System.Drawing.Point(104, 495);
             this.DelButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DelButton.Name = "DelButton";
             this.DelButton.Size = new System.Drawing.Size(195, 27);
@@ -93,16 +83,6 @@
             this.DelButton.Text = "Удалить выбранную запись";
             this.DelButton.UseVisualStyleBackColor = true;
             this.DelButton.Click += new System.EventHandler(this.DelButton_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(49, 400);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(343, 15);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Введите Фамилию и Имя заказчика для добавления в список";
             // 
             // OrdersListBox
             // 
@@ -125,14 +105,6 @@
             this.label3.Size = new System.Drawing.Size(37, 15);
             this.label3.TabIndex = 8;
             this.label3.Text = "Заказ";
-            // 
-            // ClientSName
-            // 
-            this.ClientSName.Location = new System.Drawing.Point(206, 449);
-            this.ClientSName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ClientSName.Name = "ClientSName";
-            this.ClientSName.Size = new System.Drawing.Size(158, 23);
-            this.ClientSName.TabIndex = 9;
             // 
             // EditOrderButton
             // 
@@ -176,21 +148,30 @@
             this.DelOrderButton.UseVisualStyleBackColor = true;
             this.DelOrderButton.Click += new System.EventHandler(this.DelOrderButton_Click);
             // 
+            // EditClient
+            // 
+            this.EditClient.Location = new System.Drawing.Point(104, 456);
+            this.EditClient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.EditClient.Name = "EditClient";
+            this.EditClient.Size = new System.Drawing.Size(194, 27);
+            this.EditClient.TabIndex = 0;
+            this.EditClient.Text = "Редактировать Заказчика (ФИО )";
+            this.EditClient.UseVisualStyleBackColor = true;
+            this.EditClient.Click += new System.EventHandler(this.EditButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(981, 586);
+            this.Controls.Add(this.EditClient);
             this.Controls.Add(this.DelOrderButton);
             this.Controls.Add(this.AddOrderButton);
             this.Controls.Add(this.OrderTextBox);
             this.Controls.Add(this.EditOrderButton);
-            this.Controls.Add(this.ClientSName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.OrdersListBox);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.DelButton);
-            this.Controls.Add(this.ClientName);
             this.Controls.Add(this.ClientListBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.AddButton);
@@ -210,16 +191,14 @@
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox ClientListBox;
-        private System.Windows.Forms.TextBox ClientName;
         private System.Windows.Forms.Button DelButton;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox OrdersListBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox ClientSName;
         private System.Windows.Forms.Button EditOrderButton;
         private System.Windows.Forms.TextBox OrderTextBox;
         private System.Windows.Forms.Button AddOrderButton;
         private System.Windows.Forms.Button DelOrderButton;
+        private System.Windows.Forms.Button EditClient;
     }
 }
 

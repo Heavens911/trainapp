@@ -41,12 +41,41 @@ namespace Ceiling_App
 
         public void AddButton_Click(object sender, EventArgs e)
         {
-            Client client = new Client { FirstName = ClientName.Text, LastName = ClientSName.Text };
+            ClientForm f2 = new ClientForm();
+            Client client = new Client();
+            f2.SetClient(client);
+
+            f2.ShowDialog();
 
             db.Clients.Add(client);
             db.SaveChanges();
-
             ClientListBox.Items.Add(client);
+            /* Client client = new Client { FirstName = ClientName.Text, LastName = ClientSName.Text };
+
+             
+
+             ClientListBox.Items.Add(client);*/
+        }
+        public void EditButton_Click(object sender, EventArgs e)
+        {
+            int clientindex = ClientListBox.SelectedIndex;
+
+            if (clientindex == -1)
+            {
+                return;
+            }
+
+            ClientForm f2 = new ClientForm();
+            Client client = (Client)ClientListBox.Items[clientindex];
+            f2.SetClient(client);
+
+            f2.ShowDialog();
+            if (f2.SaveClient == true)
+            { 
+
+            db.SaveChanges();
+            ClientListBox.Items[clientindex] = client;
+            }
         }
 
         private void DelButton_Click(object sender, EventArgs e)
@@ -155,18 +184,14 @@ namespace Ceiling_App
                 return;
             }
             OrderForm f2 = new OrderForm();
+              Order order = (Order)OrdersListBox.Items[orderindex];
+              f2.SetOrder(order);
 
-            Order order = (Order)OrdersListBox.Items[orderindex];
-            f2.SetOrder(order);
+              f2.ShowDialog();
 
-            f2.ShowDialog();
-
-            if (f2.SaveOrder == true)
-            {
-                db.SaveChanges();
-            }
-            OrderTextBox.Text = order.ToDetails();
-            OrdersListBox.Items[orderindex] = order;
+              OrderTextBox.Text = order.ToString();
+              OrdersListBox.Items[orderindex] = order;
+              
         }
     }
 }

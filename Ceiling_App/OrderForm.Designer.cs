@@ -81,8 +81,6 @@
             this.PField.Name = "PField";
             this.PField.Size = new System.Drawing.Size(116, 23);
             this.PField.TabIndex = 3;
-            this.PField.TextChanged += new System.EventHandler(this.PField_TextChanged);
-            this.PField.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PField_KeyPress);
             this.PField.Validated += new System.EventHandler(this.DoubleField_Validated);
             // 
             // SField
@@ -92,7 +90,6 @@
             this.SField.Name = "SField";
             this.SField.Size = new System.Drawing.Size(116, 23);
             this.SField.TabIndex = 4;
-            this.SField.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PField_KeyPress);
             this.SField.Validated += new System.EventHandler(this.DoubleField_Validated);
             // 
             // SpotField

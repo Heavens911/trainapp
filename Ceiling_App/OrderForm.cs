@@ -92,35 +92,10 @@ namespace Ceiling_App
         private void CancellButton_Click(object sender, EventArgs e)
         {
             SaveOrder = false;
-
-
             Close();
         }
 
-        private void PField_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-
-
-
-            //char number = e.KeyChar;
-
-            //if (!Char.IsDigit(number))
-            //{
-            //    e.Handled = true;
-            //}
-
-        }
-
-        private void PField_TextChanged(object sender, EventArgs e)
-        {
-            var textbox = (TextBox)sender;
-            if (!double.TryParse(textbox.Text, out var _))
-            {
-                //ValidationProcess();
-            }
-
-        }
+               
         private void IntField_Validated(object sender, EventArgs e)
         {
             Field_Validated(sender, (value) => int.TryParse(value, out var _));
