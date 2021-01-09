@@ -173,5 +173,10 @@ public void AddButton_Click(object sender, EventArgs e)
         {
             return order.OrderName;
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

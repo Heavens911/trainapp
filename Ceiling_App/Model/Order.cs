@@ -26,10 +26,21 @@ namespace Ceiling_App.Model
 
         public string ToDetails()
         {
+            if (ClientPrice <= 0 || MaterialCost <= 0 || Profit <= 0 )
+            
+            { 
             return OrderName + ":      " + "Периметр помещения составляет " + P + " метров погонных. Площадь " + S + " квадратных метров. Будет установлено " +
+                Spotlight + " светильник(ов,а) " + Lustra + " люстр(а), " + Pipe + " труб(а) в помещении " + Ugl + " угл(а, ов).";
+            }
+            else
+            {
+                return OrderName + ":      " + "Периметр помещения составляет " + P + " метров погонных. Площадь " + S + " квадратных метров. Будет установлено " +
                 Spotlight + " светильник(ов,а) " + Lustra + " люстр(а), " + Pipe + " труб(а) в помещении " + Ugl + " угл(а, ов). Цена для клиента составит " +
-                ClientPrice + " рублей. Цена комплектующих для монтажа " + MaterialCost + " рублей. Доход с монтажа" + Profit + " рублей.";
+                ClientPrice + " рублей. Цена комплектующих для монтажа " + MaterialCost + " рублей. Доход с монтажа " + Profit + " рублей.";
+            }
+                           
         }
+
         public override string ToString()
         {
             return OrderName;

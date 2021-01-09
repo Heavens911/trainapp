@@ -5,6 +5,9 @@ using System.Linq;
 using System.Windows.Forms;
 
 using Ceiling_App.Model;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Ceiling_App
 {
@@ -50,11 +53,6 @@ namespace Ceiling_App
             db.Clients.Add(client);
             db.SaveChanges();
             ClientListBox.Items.Add(client);
-            /* Client client = new Client { FirstName = ClientName.Text, LastName = ClientSName.Text };
-
-             
-
-             ClientListBox.Items.Add(client);*/
         }
         public void EditButton_Click(object sender, EventArgs e)
         {
@@ -97,8 +95,45 @@ namespace Ceiling_App
             e.Item.ForeColor = e.Item.Checked ? Color.Green : Color.Black;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
+            WebRequest request = WebRequest.Create("http://api.openweathermap.org/data/2.5/weather?q=Krasnoyarsk&APPID=13dfbfddb18aebd886a4d23c97bdf876");
+
+            request.Method = "POST";
+            request.ContentType = "aplication/x-www-urlencoded";
+
+            WebResponse response = await request.GetResponseAsync();
+
+            string answer = string.Empty;
+
+            using (Stream s = response.GetResponseStream())
+            {
+                using (StreamReader reader = new StreamReader(s))
+                {
+                    answer = await reader.ReadToEndAsync();
+                }
+            }
+            response.Close();
+
+            //richTextBox1.Text = answer;
+
+            OpenWeather.OpenWeather oW = JsonConvert.DeserializeObject<OpenWeather.OpenWeather>(answer);
+
+            panel1.BackgroundImage = oW.weather[0].Icon;
+
+            label2.Text = oW.weather[0].main;
+            label3.Text = oW.weather[0].description;
+
+            label4.Text = "Средняя температура (С*): " + oW.main.temp.ToString("0.##");
+
+            label8.Text = "Скорость (м/с): " + oW.wind.speed.ToString();
+
+            label9.Text = "Направление *: " + oW.wind.deg.ToString();
+
+            label5.Text = "Влажность (%): " + oW.main.humidity.ToString();
+
+            label6.Text = "Давление (мм): " + ((int)oW.main.pressure).ToString();
+           
 
         }
 
@@ -132,7 +167,6 @@ namespace Ceiling_App
             f2.ShowDialog();
             if (f2.SaveOrder == true)
             {
-                //  client.Orders.Add(order);
                 db.Orders.Add(order);
                 db.SaveChanges();
 
@@ -188,6 +222,7 @@ namespace Ceiling_App
               f2.SetOrder(order);
 
               f2.ShowDialog();
+              db.SaveChanges();
 
               OrderTextBox.Text = order.ToString();
               OrdersListBox.Items[orderindex] = order;
