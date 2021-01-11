@@ -1,65 +1,46 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Ceiling_App.OpenWeather
 {
-    class main
+    public class Main
     {
-        private double _temp;
+        [JsonProperty("temp")]
+        public double Temperature;
 
-        public double temp
-        {
-            get
-            {
-                return _temp;
-            }
-            set
-            {
-                _temp = value - 247.15; //перевод в Цельсия 
-            }
-        }
-        private double _pressure;
+        [JsonProperty("pressure")]
+        public double Pressure;
 
-        public double pressure
+        [JsonProperty("humidity")]
+        public double Humidity;
+
+        [JsonProperty("temp_min")]
+        public double TemperatureMin;
+
+        [JsonProperty("temp_max")]
+        public double TemperatureMax;
+
+        [OnDeserialized]
+        private void OnDeserializedMethod(StreamingContext context)
         {
-            get
-            {
-                return _pressure;
-            }
-            set
-            {
-                _pressure = value / 1.3332239; //перевод в Цельсия
-            }
+            Temperature = ToCelsius(Temperature);
+            TemperatureMin = ToCelsius(TemperatureMin);
+            TemperatureMax = ToCelsius(TemperatureMax);
+            Pressure = ConvertPressure(Pressure);
         }
 
-        public double humidity;
-
-        private double _temp_min;
-
-        public double temp_min
+        [OnSerializing]
+        private void OnSerializingMethod(StreamingContext context)
         {
-            get
-            {
-                return _temp_min;
-            }
-            set
-            {
-                _temp_min = value - 247.15; //перевод в Цельсия 
-            }
+            throw new NotImplementedException();
         }
-        private double _temp_max;
 
-        public double temp_max
-        {
-            get
-            {
-                return _temp_max;
-            }
-            set
-            {
-                _temp_max = value - 247.15; //перевод в Цельсия 
-            }
-        }
+
+        private static double ToCelsius(double kelvin) => kelvin - 273.15;
+
+        private static double ConvertPressure(double pressure) => pressure / 1.3332239;
     }
 }

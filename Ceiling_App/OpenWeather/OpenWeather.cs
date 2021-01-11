@@ -5,30 +5,28 @@ using Newtonsoft.Json;
 
 namespace Ceiling_App.OpenWeather
 {
-    class OpenWeather
+    public class OpenWeather
     {
-        public Coord coord;
+        public Coord Coord;
 
-        public weather[] weather;
+        public Weather[] Weather;
 
-       // [JsonProperty("base")]
+        [JsonProperty("Base")]
 
         public string Base;
 
-        public main main;
+        public Main Main;
 
-        public double visibility;
+        public double Visibility;
 
-        public wind wind;
-        public Clouds clouds;
+        public Wind Wind;
+        // public Clouds clouds; // удалил за ненужностью
 
-        public double dt;
+        public double Dt;
 
-        public sys sys;
-
-        public int id;
-        public string name;
-        public double cod;
+        public int Id;
+        public string Name;
+        public double Cod;
        
 
     }

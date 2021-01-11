@@ -8,6 +8,8 @@ using Ceiling_App.Model;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
+using Ceiling_App.OpenWeather;
+using System.Threading.Tasks;
 
 namespace Ceiling_App
 {
@@ -97,7 +99,12 @@ namespace Ceiling_App
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            WebRequest request = WebRequest.Create("http://api.openweathermap.org/data/2.5/weather?q=Krasnoyarsk&APPID=13dfbfddb18aebd886a4d23c97bdf876");
+            await LoadWheather("Krasnoyarsk");
+        }
+
+        private async Task LoadWheather(string cityName)
+        {
+            WebRequest request = WebRequest.Create($"http://api.openweathermap.org/data/2.5/weather?q={cityName}&APPID=13dfbfddb18aebd886a4d23c97bdf876");
 
             request.Method = "POST";
             request.ContentType = "aplication/x-www-urlencoded";
@@ -119,22 +126,20 @@ namespace Ceiling_App
 
             OpenWeather.OpenWeather oW = JsonConvert.DeserializeObject<OpenWeather.OpenWeather>(answer);
 
-            panel1.BackgroundImage = oW.weather[0].Icon;
+            panel1.BackgroundImage = oW.Weather[0]._Icon;
 
-            label2.Text = oW.weather[0].main;
-            label3.Text = oW.weather[0].description;
+            label2.Text = oW.Weather[0].Main;
+            label3.Text = oW.Weather[0].Description;
 
-            label4.Text = "Средняя температура (С*): " + oW.main.temp.ToString("0.##");
+            label4.Text = "Средняя температура (℃): " + oW.Main.Temperature.ToString("0.##");
 
-            label8.Text = "Скорость (м/с): " + oW.wind.speed.ToString();
+            label8.Text = "Скорость (м/с): " + oW.Wind.Speed.ToString();
 
-            label9.Text = "Направление *: " + oW.wind.deg.ToString();
+            label9.Text = "Направление °: " + oW.Wind.Degree.ToString();
 
-            label5.Text = "Влажность (%): " + oW.main.humidity.ToString();
+            label5.Text = "Влажность (%): " + oW.Main.Humidity.ToString();
 
-            label6.Text = "Давление (мм): " + ((int)oW.main.pressure).ToString();
-           
-
+            label6.Text = "Давление (мм): " + ((int)oW.Main.Pressure).ToString();
         }
 
         private void ClientListBox_SelectedIndexChanged(object sender, EventArgs e)

@@ -1,13 +1,19 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Ceiling_App.OpenWeather
 {
-    class wind
+    public class Wind
     {
-        public double speed;
-        public double deg;
-        public double gust;
+        [JsonProperty("speed")]
+        public double Speed;
+
+        [JsonProperty("deg")]
+        public double Degree;
+
+        [JsonProperty("gust")]
+        public double Gust;
     }
 }

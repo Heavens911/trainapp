@@ -2,24 +2,29 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
+using Newtonsoft.Json;
 
 namespace Ceiling_App.OpenWeather
 {
-    class weather
+    public class Weather
     {
-        public int id;
-        
-        public string main;
-        
-        public string description;
+        [JsonProperty("id")]
+        public int Id;
 
-        public string icon;
+        [JsonProperty("main")]
+        public string Main;
 
-        public Bitmap Icon
+        [JsonProperty("description")]
+        public string Description;
+
+        [JsonProperty("icon")]
+        public string Icon;
+
+        public Bitmap _Icon
         {
             get 
             {
-                return new Bitmap(Image.FromFile($"ICONS/{icon}.png"));
+                return new Bitmap(Image.FromFile($"ICONS/{Icon}.png"));
             }
 
         }
