@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 #nullable disable
 
@@ -14,6 +15,7 @@ namespace Ceiling_App.Model
         public int Spotlight { get; set; }
         public int Lustra { get; set; }
         public int Pipe { get; set; }
+        [JsonProperty("angle")]
         public int Ugl { get; set; }
         public int ClientId { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
