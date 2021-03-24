@@ -20,7 +20,7 @@ namespace Ceiling_App.Model
 
         public virtual Client Client { get; set; }
 
-        public double ClientPrice => P * 150 + S * 300 + Spotlight * 450 + Lustra * 200 + Pipe * 100 + (Ugl - 4) * 150;
+        public double ClientPrice => P * 99 + S * 300 + Spotlight * 450 + Lustra * 200 + Pipe * 100 + (Ugl - 4) * 150;
         public double MaterialCost => P * 30 + S * 120 + Spotlight * 200 + Lustra * 50 + Pipe * 25 + (Ugl - 4) * 100;
         public double Profit => ClientPrice - MaterialCost;
 

@@ -15,6 +15,8 @@ namespace Ceiling_App
 {
     public partial class MainForm : Form
     {
+        private const string WeatherCityName = "Krasnoyarsk";
+
         private TrainAppOrdersContext db;
 
         public MainForm()
@@ -99,12 +101,12 @@ namespace Ceiling_App
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            await LoadWheather("Krasnoyarsk");
+            await LoadWheather(WeatherCityName, "13dfbfddb18aebd886a4d23c97bdf876");
         }
 
-        private async Task LoadWheather(string cityName)
+        private async Task LoadWheather(string cityName,string AppId )
         {
-            WebRequest request = WebRequest.Create($"http://api.openweathermap.org/data/2.5/weather?q={cityName}&APPID=13dfbfddb18aebd886a4d23c97bdf876");
+            WebRequest request = WebRequest.Create($"http://api.openweathermap.org/data/2.5/weather?q={cityName}&APPID={AppId}");
 
             request.Method = "POST";
             request.ContentType = "aplication/x-www-urlencoded";
@@ -232,6 +234,11 @@ namespace Ceiling_App
               OrderTextBox.Text = order.ToString();
               OrdersListBox.Items[orderindex] = order;
               
+        }
+
+        private void PriceButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

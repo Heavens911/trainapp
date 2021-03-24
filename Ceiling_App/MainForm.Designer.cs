@@ -48,6 +48,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.PriceButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -257,11 +258,22 @@
             this.panel1.Size = new System.Drawing.Size(90, 90);
             this.panel1.TabIndex = 0;
             // 
+            // PriceButton
+            // 
+            this.PriceButton.Location = new System.Drawing.Point(833, 27);
+            this.PriceButton.Name = "PriceButton";
+            this.PriceButton.Size = new System.Drawing.Size(75, 23);
+            this.PriceButton.TabIndex = 16;
+            this.PriceButton.Text = "Задать цена";
+            this.PriceButton.UseVisualStyleBackColor = true;
+            this.PriceButton.Click += new System.EventHandler(this.PriceButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(981, 586);
+            this.Controls.Add(this.PriceButton);
             this.Controls.Add(this.EditClient);
             this.Controls.Add(this.DelOrderButton);
             this.Controls.Add(this.AddOrderButton);
@@ -311,6 +323,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button PriceButton;
     }
 }
 
