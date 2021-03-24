@@ -1,0 +1,22 @@
+{
+    "client": {
+        "id": "",
+        "first name": "",
+        "last name": "",
+        "order": {
+            "id": "",
+            "order name": "",
+            "p": "",
+            "s": "",
+            "spot": "",
+            "lustra": "",
+            "pipe": "",
+            "angle": "",
+            "price1": "",
+            "price2": "",
+            "price3": ""
+        }
+
+    }
+
+}
